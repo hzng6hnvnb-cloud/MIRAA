@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>مِرآة | منصة الفيديو</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- الشريط الجانبي -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">▶</div>
+
+            <div>
+                <strong>مِرآة</strong>
+                <small>منصة الفيديو</small>
+            </div>
+        </div>
+
+        <nav>
+
+            <button class="nav-item active" onclick="showSection('home')">
+                <span>⌂</span>
+                الرئيسية
+            </button>
+
+            <button class="nav-item" onclick="showSection('trending')">
+                <span>🔥</span>
+                الأكثر مشاهدة
+            </button>
+
+            <button class="nav-item" onclick="showSection('subscriptions')">
+                <span>◉</span>
+                الاشتراكات
+            </button>
+
+            <div class="nav-title">
+                مكتبتك
+            </div>
+
+            <button class="nav-item">
+                <span>♡</span>
+                المفضلة
+            </button>
+
+            <button class="nav-item">
+                <span>◷</span>
+                سجل المشاهدة
+            </button>
+
+            <button class="nav-item">
+                <span>▣</span>
+                قوائم التشغيل
+            </button>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+            <span>مِرآة</span>
+            <small>مشاهدة بدون إعلانات</small>
+        </div>
+
+    </aside>
+
+
+    <!-- المحتوى -->
+
+    <main class="main">
+
+        <!-- الهيدر -->
+
+        <header class="header">
+
+            <button class="mobile-menu" onclick="toggleSidebar()">
+                ☰
+            </button>
+
+            <div class="mobile-logo">
+                <div>▶</div>
+                مِرآة
+            </div>
+
+            <div class="search">
+
+                <input
+                    id="searchInput"
+                    type="text"
+                    placeholder="ابحث عن فيديو أو قناة..."
+                    oninput="searchVideos()"
+                >
+
+                <button onclick="searchVideos()">
+                    🔍
+                </button>
+
+            </div>
+
+            <div class="header-actions">
+
+                <button>＋</button>
+                <button>🔔</button>
+
+                <div class="profile">
+                    م
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- المحتوى الرئيسي -->
+
+        <section id="home" class="content">
+
+            <div class="hero">
+
+                <div class="hero-content">
+
+                    <span class="hero-label">
+                        ✦ مميز اليوم
+                    </span>
+
+                    <h1>
+                        اكتشف شيئًا<br>
+                        <span>يستحق المشاهدة.</span>
+                    </h1>
+
+                    <p>
+                        أفلام، وثائقيات، مقاطع، وبرامج
+                        من عالم الفيديو في مكان واحد.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <button
+                            class="watch-btn"
+                            onclick="openVideo(0)"
+                        >
+                            ▶ شاهد الآن
+                        </button>
+
+                        <button class="info-btn">
+                            تفاصيل
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="hero-gradient"></div>
+
+            </div>
+
+
+            <!-- التصنيفات -->
+
+            <div class="categories">
+
+                <button class="category active">الكل</button>
+                <button class="category">ترفيه</button>
+                <button class="category">رياضة</button>
+                <button class="category">ألعاب</button>
+                <button class="category">موسيقى</button>
+                <button class="category">أفلام</button>
+                <button class="category">تقنية</button>
+                <button class="category">وثائقيات</button>
+
+            </div>
+
+
+            <!-- الفيديوهات -->
+
+            <div class="section-title">
+
+                <div>
+                    <h2>مقترح لك</h2>
+                    <p>فيديوهات اخترناها لك</p>
+                </div>
+
+                <button>عرض الكل ←</button>
+
+            </div>
+
+            <div id="videoGrid" class="video-grid"></div>
+
+
+            <!-- الأكثر مشاهدة -->
+
+            <div class="section-title second">
+
+                <div>
+                    <h2>الأكثر مشاهدة 🔥</h2>
+                    <p>الفيديوهات التي يتابعها الجميع</p>
+                </div>
+
+            </div>
+
+            <div id="trendingGrid" class="video-grid"></div>
+
+        </section>
+
+
+        <!-- صفحة الأكثر مشاهدة -->
+
+        <section id="trending" class="content hidden">
+
+            <div class="page-heading">
+
+                <span>🔥</span>
+
+                <div>
+                    <h1>الأكثر مشاهدة</h1>
+                    <p>شاهد أكثر الفيديوهات انتشارًا</p>
+                </div>
+
+            </div>
+
+            <div id="trendingPageGrid" class="video-grid"></div>
+
+        </section>
+
+
+        <!-- الاشتراكات -->
+
+        <section id="subscriptions" class="content hidden">
+
+            <div class="page-heading">
+
+                <span>◉</span>
+
+                <div>
+                    <h1>الاشتراكات</h1>
+                    <p>أحدث فيديوهات القنوات التي تتابعها</p>
+                </div>
+
+            </div>
+
+            <div id="subscriptionGrid" class="video-grid"></div>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+<!-- نافذة مشاهدة الفيديو -->
+
+<div id="videoModal" class="modal">
+
+    <div class="video-modal">
+
+        <button class="close" onclick="closeVideo()">
+            ×
+        </button>
+
+        <video
+            id="videoPlayer"
+            controls
+            playsinline
+        ></video>
+
+        <div class="video-info">
+
+            <div>
+
+                <span id="modalCategory">
+                    ترفيه
+                </span>
+
+                <h2 id="modalTitle">
+                    عنوان الفيديو
+                </h2>
+
+                <p id="modalChannel">
+                    قناة مِرآة
+                </p>
+
+            </div>
+
+            <div class="video-actions">
+
+                <button onclick="likeVideo()">
+                    ♡ <span id="likes">١.٢ ألف</span>
+                </button>
+
+                <button onclick="saveVideo()">
+                    ☆ حفظ
+                </button>
+
+                <button onclick="shareVideo()">
+                    ↗ مشاركة
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="app.js"></script>
+
+</body>
+</html>
